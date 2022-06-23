@@ -10,13 +10,13 @@ module.exports = {
         tickets: "./assets/js/tickets.js"
     },
     output: {
-        filename: "[name].bundle.js",
-        path: __dirname + "/dist",
+        path: path.join(__dirname + "/dist"),
+        filename: "[name].bundle.js"
     },
     module: {
         rules: [
             {
-                test: /\.jpg$/i,
+                test: /\.(png|jpe?g|gif)$/i,
                 use: [
                     {
                         loader: 'file-loader',
@@ -46,6 +46,9 @@ module.exports = {
             analyzerMode: "static", // the report outputs to an HTML file in the dist folder
         })
     ],
-    mode: 'development'
+    mode: 'development',
+    devServer: {
+        static: './'
+    }
 
 };
